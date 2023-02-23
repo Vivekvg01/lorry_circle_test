@@ -12,7 +12,6 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kBackgroundColor,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -22,7 +21,7 @@ class HomeView extends GetView<HomeController> {
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 30,
-                color: AppColors.kWhiteColor,
+                color: AppColors.kBlackColor,
               ),
             ),
             sizedHeight(Get.height * 0.07),

@@ -12,7 +12,7 @@ class RegisterView extends GetView<RegisterController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.kBackgroundColor,
+      //backgroundColor: AppColors.kBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -25,7 +25,7 @@ class RegisterView extends GetView<RegisterController> {
                     const Text(
                       'Test App',
                       style: TextStyle(
-                        color: AppColors.kWhiteColor,
+                        color: AppColors.kRedColor,
                         fontSize: 31,
                         fontWeight: FontWeight.bold,
                       ),
@@ -61,9 +61,6 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                             const Text(
                               'Male',
-                              style: TextStyle(
-                                color: AppColors.kWhiteColor,
-                              ),
                             ),
                             Radio(
                               value: 'Female',
@@ -75,9 +72,6 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                             const Text(
                               'Female',
-                              style: TextStyle(
-                                color: AppColors.kWhiteColor,
-                              ),
                             ),
                             Radio(
                               value: 'Other',
@@ -89,9 +83,6 @@ class RegisterView extends GetView<RegisterController> {
                             ),
                             const Text(
                               'Other',
-                              style: TextStyle(
-                                color: AppColors.kWhiteColor,
-                              ),
                             ),
                           ],
                         );
