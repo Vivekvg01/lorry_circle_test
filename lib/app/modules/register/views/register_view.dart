@@ -30,7 +30,7 @@ class RegisterView extends GetView<RegisterController> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    sizedHeight(Get.height * 0.03),
+                    sizedHeight(Get.height * 0.06),
                     CustomTextFeild(
                       hintText: 'First Name',
                       validateText: 'please enter your first name',
@@ -45,42 +45,55 @@ class RegisterView extends GetView<RegisterController> {
                       textController: controller.lastNameController,
                     ),
                     sizedHeight(Get.height * 0.01),
-                    Row(
-                      children: [
-                        Radio(
-                          value: 'male',
-                          groupValue: controller.gender,
-                          onChanged: (val) {
-                            controller.gender!.value = val.toString();
-                          },
-                        ),
-                        const Text(
-                          'Male',
-                          style: TextStyle(color: AppColors.kWhiteColor),
-                        ),
-                        Radio(
-                          value: 'Female',
-                          groupValue: controller.gender,
-                          onChanged: (val) {
-                            controller.gender!.value = val.toString();
-                          },
-                        ),
-                        const Text(
-                          'Female',
-                          style: TextStyle(color: AppColors.kWhiteColor),
-                        ),
-                        Radio(
-                          value: 'Other',
-                          groupValue: controller.gender,
-                          onChanged: (val) {
-                            controller.gender!.value = val.toString();
-                          },
-                        ),
-                        const Text(
-                          'Other',
-                          style: TextStyle(color: AppColors.kWhiteColor),
-                        ),
-                      ],
+                    GetBuilder<RegisterController>(
+                      builder: (context) {
+                        return Row(
+                          children: [
+                            Radio(
+                              value: 'Male',
+                              groupValue: controller.selectedGender,
+                              activeColor: AppColors.kRedColor,
+                              onChanged: (val) {
+                                controller.setGender(val);
+                              },
+                            ),
+                            const Text(
+                              'Male',
+                              style: TextStyle(
+                                color: AppColors.kWhiteColor,
+                              ),
+                            ),
+                            Radio(
+                              value: 'Female',
+                              groupValue: controller.selectedGender,
+                              activeColor: AppColors.kRedColor,
+                              onChanged: (val) {
+                                controller.setGender(val);
+                              },
+                            ),
+                            const Text(
+                              'Female',
+                              style: TextStyle(
+                                color: AppColors.kWhiteColor,
+                              ),
+                            ),
+                            Radio(
+                              value: 'Other',
+                              groupValue: controller.selectedGender,
+                              activeColor: AppColors.kRedColor,
+                              onChanged: (val) {
+                                controller.setGender(val);
+                              },
+                            ),
+                            const Text(
+                              'Other',
+                              style: TextStyle(
+                                color: AppColors.kWhiteColor,
+                              ),
+                            ),
+                          ],
+                        );
+                      },
                     ),
                     DropdownButtonFormField(
                       decoration: InputDecoration(
