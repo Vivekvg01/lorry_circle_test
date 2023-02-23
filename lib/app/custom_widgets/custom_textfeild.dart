@@ -8,15 +8,16 @@ class CustomTextFeild extends StatelessWidget {
   String validateText;
   IconData? icon;
   int? maxLines;
+  double prefixBottomPadding;
 
   CustomTextFeild({
     Key? key,
     required this.textController,
     required this.validateText,
     this.hintText,
-    this.labelText,
     this.icon,
     this.maxLines,
+    this.prefixBottomPadding = 0.0,
   }) : super(key: key);
 
   @override
@@ -31,13 +32,14 @@ class CustomTextFeild extends StatelessWidget {
       },
       controller: textController,
       decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: AppColors.kWhiteColor),
+        prefixIcon: Padding(
+          padding: EdgeInsets.only(bottom: prefixBottomPadding),
+          child: Icon(icon, color: AppColors.kWhiteColor),
+        ),
         hintText: hintText,
-        labelText: labelText,
         hintStyle: const TextStyle(color: AppColors.kGreyColor),
         labelStyle: const TextStyle(color: AppColors.kGreyColor),
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(5)),
-        contentPadding: const EdgeInsets.all(8.0),
         fillColor: AppColors.kBlackColor,
         filled: true,
         focusedBorder: const OutlineInputBorder(

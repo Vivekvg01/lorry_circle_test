@@ -12,7 +12,7 @@ class AppPages {
   AppPages._();
 
   // ignore: constant_identifier_names
-  static const INITIAL = Routes.REGISTER;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -31,7 +31,10 @@ class AppPages {
     GetPage(
       name: _Paths.SPLASH,
       page: () => const SplashView(),
-      binding: SplashBinding(),
+      bindings: [
+        SplashBinding(),
+        RegisterBinding(),
+      ],
     ),
   ];
 }

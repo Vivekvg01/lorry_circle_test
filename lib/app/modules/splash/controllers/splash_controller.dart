@@ -1,23 +1,17 @@
 import 'package:get/get.dart';
+import 'package:lorry_circle_test/app/modules/register/views/register_view.dart';
 
 class SplashController extends GetxController {
-  //TODO: Implement SplashController
-
-  final count = 0.obs;
   @override
   void onInit() {
+    gotoRegisterPage();
     super.onInit();
   }
 
-  @override
-  void onReady() {
-    super.onReady();
+  Future<void> gotoRegisterPage() async {
+    await Future.delayed(const Duration(seconds: 2));
+    Get.to(
+      () => const RegisterView(),
+    );
   }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

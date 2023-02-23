@@ -36,6 +36,7 @@ class RegisterView extends GetView<RegisterController> {
                       validateText: 'please enter your first name',
                       icon: Icons.person,
                       textController: controller.firstNameController,
+                      maxLines: 1,
                     ),
                     sizedHeight(Get.height * 0.02),
                     CustomTextFeild(
@@ -43,6 +44,7 @@ class RegisterView extends GetView<RegisterController> {
                       validateText: 'please enter your last name',
                       icon: Icons.person,
                       textController: controller.lastNameController,
+                      maxLines: 1,
                     ),
                     sizedHeight(Get.height * 0.01),
                     GetBuilder<RegisterController>(
@@ -98,8 +100,9 @@ class RegisterView extends GetView<RegisterController> {
                     DropdownButtonFormField(
                       decoration: InputDecoration(
                         hintText: 'Select your language',
-                        hintStyle:
-                            const TextStyle(color: AppColors.kWhiteColor),
+                        hintStyle: const TextStyle(
+                          color: AppColors.kWhiteColor,
+                        ),
                         border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(5)),
                         contentPadding: const EdgeInsets.all(8.0),
@@ -138,11 +141,53 @@ class RegisterView extends GetView<RegisterController> {
                     CustomTextFeild(
                       textController: controller.addressController,
                       maxLines: 3,
-                      labelText: 'Address',
+                      hintText: 'Address',
                       icon: Icons.location_on,
                       validateText: 'please enter your address',
+                      prefixBottomPadding: 35,
                     ),
                     sizedHeight(Get.height * 0.05),
+                    DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Select your language',
+                        hintStyle: const TextStyle(
+                          color: AppColors.kWhiteColor,
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        contentPadding: const EdgeInsets.all(8.0),
+                        fillColor: AppColors.kBlackColor,
+                        filled: true,
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.kRedColor,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please select your language';
+                        }
+                        return null;
+                      },
+                      items: controller.languages
+                          .map(
+                            (item) => DropdownMenuItem(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                    color: AppColors.kWhiteColor),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (String? newValue) {
+                        controller.currentLanguageValue.value = newValue!;
+                      },
+                      dropdownColor: AppColors.kBlackColor,
+                    ),
+                    sizedHeight(Get.height * 0.03),
                     CustomButton(
                       text: 'Submit',
                       onPressed: () {
