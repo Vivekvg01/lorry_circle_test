@@ -42,7 +42,7 @@ class RegisterApi {
           backgroundColor: AppColors.kGreenColor,
           colorText: AppColors.kWhiteColor,
         );
-        Get.to(() => const HomeView());
+        Get.off(() => const HomeView());
       } else if (response.statusCode == 400) {
         final data = jsonDecode(response.body);
         final errorMessage = data['message'];

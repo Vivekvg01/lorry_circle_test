@@ -30,10 +30,6 @@ class HomeView extends GetView<HomeController> {
               onTap: () {
                 Get.bottomSheet(
                   PickImageBottomSheet(
-                    galleryFunction: () {
-                      controller.getImage(ImageSource.gallery);
-                      Get.back();
-                    },
                     cameraFunction: () {
                       controller.getImage(ImageSource.camera);
                       Get.back();

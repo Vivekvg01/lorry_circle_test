@@ -7,11 +7,9 @@ class PickImageBottomSheet extends GetView {
   const PickImageBottomSheet({
     super.key,
     required this.cameraFunction,
-    required this.galleryFunction,
   });
 
   final VoidCallback cameraFunction;
-  final VoidCallback galleryFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -57,28 +55,6 @@ class PickImageBottomSheet extends GetView {
                   ],
                 ),
                 sizedWidth(Get.width * 0.1),
-                Column(
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: AppColors.kBlackColor,
-                      child: IconButton(
-                        onPressed: galleryFunction,
-                        icon: const Icon(
-                          Icons.photo_sharp,
-                          color: AppColors.kRedColor,
-                        ),
-                      ),
-                    ),
-                    sizedHeight(Get.height * 0.02),
-                    const Text(
-                      'Gallery',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.kWhiteColor,
-                      ),
-                    ),
-                  ],
-                ),
               ],
             ),
           )

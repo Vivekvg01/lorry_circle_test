@@ -138,6 +138,47 @@ class RegisterView extends GetView<RegisterController> {
                       dropdownColor: AppColors.kBlackColor,
                     ),
                     sizedHeight(Get.height * 0.02),
+                    DropdownButtonFormField(
+                      decoration: InputDecoration(
+                        hintText: 'Choose 1 for success 0 for faliure',
+                        hintStyle: const TextStyle(
+                          color: AppColors.kWhiteColor,
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5)),
+                        contentPadding: const EdgeInsets.all(8.0),
+                        fillColor: AppColors.kBlackColor,
+                        filled: true,
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: AppColors.kRedColor,
+                          ),
+                        ),
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Please choose a status that you want';
+                        }
+                        return null;
+                      },
+                      items: controller.respStatus
+                          .map(
+                            (item) => DropdownMenuItem(
+                              value: item,
+                              child: Text(
+                                item,
+                                style: const TextStyle(
+                                    color: AppColors.kWhiteColor),
+                              ),
+                            ),
+                          )
+                          .toList(),
+                      onChanged: (String? newValue) {
+                        controller.currentStatus.value = newValue!;
+                      },
+                      dropdownColor: AppColors.kBlackColor,
+                    ),
+                    sizedHeight(Get.height * 0.02),
                     CustomTextFeild(
                       textController: controller.addressController,
                       maxLines: 3,

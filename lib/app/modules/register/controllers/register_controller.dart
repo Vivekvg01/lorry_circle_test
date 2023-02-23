@@ -32,21 +32,25 @@ class RegisterController extends GetxController {
     "Kannada"
   ];
 
-  RxString currentStatus = ''.obs;
+  RxString currentStatus = '0'.obs;
   List<String> respStatus = ['0', '1'];
+  int? statusVal;
 
   ///After the validation of the form the register api would be called.
   ///Then it shows the response.
   Future<void> onSubmitButtonClick() async {
     if (formKey.currentState!.validate()) {
-      await RegisterApi().registerUser(
-        firstNameController.text,
-        lastNameController.text,
-        selectedGender,
-        currentLanguageValue.value,
-        addressController.text,
-        5,
-      );
+      statusVal = int.parse(currentStatus.value);
+      if (statusVal != null) {
+        await RegisterApi().registerUser(
+          firstNameController.text,
+          lastNameController.text,
+          selectedGender,
+          currentLanguageValue.value,
+          addressController.text,
+          statusVal!,
+        );
+      }
     }
   }
 }
