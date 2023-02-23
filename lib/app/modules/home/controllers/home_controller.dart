@@ -1,23 +1,31 @@
+import 'dart:io';
+
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:lorry_circle_test/app/utils/app_colors.dart';
 
 class HomeController extends GetxController {
-  //TODO: Implement HomeController
+  final ImagePicker _picker = ImagePicker();
 
-  final count = 0.obs;
-  @override
-  void onInit() {
-    super.onInit();
+  var selectedImagePath = ''.obs;
+  var selectedImageSize = ''.obs;
+
+  void getImage(ImageSource imageSource) async {
+    final pickedFile = await ImagePicker().pickImage(source: imageSource);
+
+    if (pickedFile != null) {
+      selectedImagePath.value = pickedFile.path;
+      selectedImageSize.value =
+          "${(File(selectedImagePath.value).lengthSync() / 1024 / 1024)
+              .toStringAsFixed(2)}Mb";
+    } else {
+      Get.snackbar(
+        'Error',
+        'No image selected',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: AppColors.kRedColor,
+        colorText: AppColors.kWhiteColor,
+      );
+    }
   }
-
-  @override
-  void onReady() {
-    super.onReady();
-  }
-
-  @override
-  void onClose() {
-    super.onClose();
-  }
-
-  void increment() => count.value++;
 }

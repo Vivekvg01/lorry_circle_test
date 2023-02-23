@@ -22,6 +22,15 @@ class RegisterView extends GetView<RegisterController> {
                 key: controller.formKey,
                 child: Column(
                   children: [
+                    const Text(
+                      'Test App',
+                      style: TextStyle(
+                        color: AppColors.kWhiteColor,
+                        fontSize: 31,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    sizedHeight(Get.height * 0.03),
                     CustomTextFeild(
                       hintText: 'First Name',
                       validateText: 'please enter your first name',
