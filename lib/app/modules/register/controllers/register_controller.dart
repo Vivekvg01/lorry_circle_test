@@ -21,7 +21,8 @@ class RegisterController extends GetxController {
     update();
   }
 
-  RxString currentLanguageValue = "English".obs; //For selected language.
+  //Can select the languages by dorpdownvalue
+  RxString currentLanguageValue = "English".obs;
   List<String> languages = [
     'English',
     'Malayalam',
@@ -30,6 +31,9 @@ class RegisterController extends GetxController {
     "Telugu",
     "Kannada"
   ];
+
+  RxString currentStatus = ''.obs;
+  List<String> respStatus = ['0', '1'];
 
   ///After the validation of the form the register api would be called.
   ///Then it shows the response.
@@ -41,7 +45,7 @@ class RegisterController extends GetxController {
         selectedGender,
         currentLanguageValue.value,
         addressController.text,
-        1,
+        5,
       );
     }
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lorry_circle_test/app/utils/app_colors.dart';
 
+// ignore: must_be_immutable
 class CustomTextFeild extends StatelessWidget {
   TextEditingController textController = TextEditingController();
   String? hintText;
