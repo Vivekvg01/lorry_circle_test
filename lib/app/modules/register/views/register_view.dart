@@ -117,7 +117,7 @@ class RegisterView extends GetView<RegisterController> {
                         }
                         return null;
                       },
-                      items: controller.dropdownValues
+                      items: controller.languages
                           .map(
                             (item) => DropdownMenuItem(
                               value: item,
@@ -130,14 +130,14 @@ class RegisterView extends GetView<RegisterController> {
                           )
                           .toList(),
                       onChanged: (String? newValue) {
-                        controller.dropdownCurrentValue.value = newValue!;
+                        controller.currentLanguageValue.value = newValue!;
                       },
                       dropdownColor: AppColors.kBlackColor,
                     ),
                     sizedHeight(Get.height * 0.02),
                     CustomTextFeild(
                       textController: controller.addressController,
-                      maxLines: 6,
+                      maxLines: 3,
                       labelText: 'Address',
                       icon: Icons.location_on,
                       validateText: 'please enter your address',

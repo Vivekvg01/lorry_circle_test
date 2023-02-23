@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lorry_circle_test/app/modules/home/views/home_view.dart';
+import 'package:lorry_circle_test/app/modules/register/api/register_api.dart';
 
 class RegisterController extends GetxController {
   //TextEditin controller for getting input values
@@ -20,8 +21,8 @@ class RegisterController extends GetxController {
     update();
   }
 
-  RxString dropdownCurrentValue = "English".obs; //For selected language.
-  List<String> dropdownValues = [
+  RxString currentLanguageValue = "English".obs; //For selected language.
+  List<String> languages = [
     'English',
     'Malayalm',
     'Tamil',
@@ -31,7 +32,14 @@ class RegisterController extends GetxController {
 
   void onSubmitButtonClick() {
     if (formKey.currentState!.validate()) {
-      Get.to(() => const HomeView());
+      RegisterApi().registerUser(
+        firstNameController.text,
+        lastNameController.text,
+        selectedGender,
+        currentLanguageValue.value,
+        addressController.text,
+        1,
+      );
     }
   }
 }
